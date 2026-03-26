@@ -26,6 +26,19 @@ export type SpotlightBlock = {
   description?: string;
   body: string;
   points?: string[];
+  visual?:
+    | "brand-system"
+    | "scale-friction"
+    | "platform-grid"
+    | "copilot"
+    | "simulation-lab"
+    | "workflow-loop"
+    | "care-bridge"
+    | "roadmap"
+    | "partnership"
+    | "academy"
+    | "expansion-network"
+    | "growth-path";
   image?: string;
   imageAlt?: string;
   imagePosition?: "left" | "right";
@@ -69,8 +82,21 @@ export type ProposalPage = {
   title: string;
   description: string;
   heroNote: string;
-  heroImage: string;
-  heroImageAlt: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+  heroVisual?:
+    | "brand-system"
+    | "scale-friction"
+    | "platform-grid"
+    | "copilot"
+    | "simulation-lab"
+    | "workflow-loop"
+    | "care-bridge"
+    | "roadmap"
+    | "partnership"
+    | "academy"
+    | "expansion-network"
+    | "growth-path";
   blocks: ProposalBlock[];
 };
 
@@ -125,8 +151,7 @@ export const proposalPages: ProposalPage[] = [
           "Make risk, participation, and symptom trends visible sooner",
           "Create a foundation that can expand into LMS, analytics, and integrations"
         ],
-        image: "/presentation-assets/logo-mark.jpg",
-        imageAlt: "OpenRecovery mark from the attached presentation"
+        visual: "brand-system"
       }
     ]
   },
@@ -139,8 +164,7 @@ export const proposalPages: ProposalPage[] = [
       "Expanding physical IOP alongside virtual recovery coaching introduces structural friction. Without a unified system, growth creates operational drag.",
     heroNote:
       "This chapter combines the presentation's scaling-friction page with the traditional-versus-OpenRecovery comparison so the operating problem and the operating answer live together.",
-    heroImage: "/presentation-assets/cover-slide.png",
-    heroImageAlt: "Proposal cover used as a visual anchor",
+    heroVisual: "scale-friction",
     blocks: [
       {
         type: "cards",
@@ -191,9 +215,8 @@ export const proposalPages: ProposalPage[] = [
     description:
       "The presentation frames the platform as a connected system rather than five independent products, so this page brings those workstreams together in one place.",
     heroNote:
-      "Each pillar still stands on its own, but the site now presents them as one coherent operating environment with real interface imagery pulled from the deck.",
-    heroImage: "/presentation-assets/copilot-home.jpg",
-    heroImageAlt: "RecoveryIQ training interface from the attached presentation",
+      "Each pillar still stands on its own, but the site now presents them as one coherent operating environment using purpose-built visuals rather than deck exports.",
+    heroVisual: "platform-grid",
     blocks: [
       {
         type: "cards",
@@ -203,23 +226,19 @@ export const proposalPages: ProposalPage[] = [
         items: [
           {
             title: "Hybrid virtual IOP",
-            body: "Closes the gap between live sessions and locations through assignments, check-ins, educational delivery, and between-session reinforcement.",
-            icon: "/presentation-assets/page-2-Image13.jpg"
+            body: "Closes the gap between live sessions and locations through assignments, check-ins, educational delivery, and between-session reinforcement."
           },
           {
             title: "Measurement-based care",
-            body: "Turns structured assessments and repeated triage check-ins into clear clinical signals that improve intake and progress tracking.",
-            icon: "/presentation-assets/page-8-Image15.jpg"
+            body: "Turns structured assessments and repeated triage check-ins into clear clinical signals that improve intake and progress tracking."
           },
           {
             title: "Provider tracking and RecoveryIQ",
-            body: "Creates staff-side visibility into participation and symptom trends while triggering assignments, follow-up, and targeted support.",
-            icon: "/presentation-assets/page-2-Image14.jpg"
+            body: "Creates staff-side visibility into participation and symptom trends while triggering assignments, follow-up, and targeted support."
           },
           {
             title: "Organizational knowledge copilot",
-            body: "Activates approved Reprieve clinical models, policies, and workflows through structured ingestion, query processing, and citation-backed responses.",
-            icon: "/presentation-assets/page-8-Image20.jpg"
+            body: "Activates approved Reprieve clinical models, policies, and workflows through structured ingestion, query processing, and citation-backed responses."
           },
           {
             title: "AI learning and simulation",
@@ -237,8 +256,7 @@ export const proposalPages: ProposalPage[] = [
           "Queries are logged, processed, and contextualized",
           "Staff receive exact, citation-backed answers with less supervisor drag"
         ],
-        image: "/presentation-assets/copilot-home.jpg",
-        imageAlt: "Organizational knowledge copilot screen"
+        visual: "copilot"
       },
       {
         type: "spotlight",
@@ -250,8 +268,7 @@ export const proposalPages: ProposalPage[] = [
           "Less trainer time spent on repeated fundamentals",
           "A natural path into a more complete LMS later on"
         ],
-        image: "/presentation-assets/simulation-rubric.jpg",
-        imageAlt: "Simulation scoring screen shown in the deck",
+        visual: "simulation-lab",
         imagePosition: "left"
       }
     ]
@@ -265,8 +282,7 @@ export const proposalPages: ProposalPage[] = [
       "The deck moves from operational outcomes to a single continuous workflow. This page translates those ideas into a cleaner product narrative.",
     heroNote:
       "Instead of separate numbered slides, the flywheel and the operating model are combined into one chapter so the site explains cause and effect more clearly.",
-    heroImage: "/presentation-assets/simulation-rubric.jpg",
-    heroImageAlt: "Simulation scoring interface used as a workflow visual",
+    heroVisual: "workflow-loop",
     blocks: [
       {
         type: "cards",
@@ -332,8 +348,7 @@ export const proposalPages: ProposalPage[] = [
           "Mid-week asynchronous check-in",
           "Next scheduled live session"
         ],
-        image: "/presentation-assets/logo-mark.jpg",
-        imageAlt: "OpenRecovery mark"
+        visual: "care-bridge"
       }
     ]
   },
@@ -346,8 +361,7 @@ export const proposalPages: ProposalPage[] = [
       "This page follows the proposal's implementation chapter from discovery through deployment, finalization, and launch-ready acceptance.",
     heroNote:
       "The sprint is now its own chapter in the site, with enough room to explain both the delivery motion and the acceptance standard without feeling compressed.",
-    heroImage: "/presentation-assets/cover-slide.png",
-    heroImageAlt: "Presentation cover thumbnail",
+    heroVisual: "roadmap",
     blocks: [
       {
         type: "timeline",
@@ -421,8 +435,7 @@ export const proposalPages: ProposalPage[] = [
       "The presentation offers two investment structures for Phase One, then positions Phase Two as an ongoing activation and expansion path.",
     heroNote:
       "This page is intentionally more commercial in tone so the proposal can move from operating logic into decision-making without breaking the flow.",
-    heroImage: "/presentation-assets/resource-protocols.jpg",
-    heroImageAlt: "Resource protocol graphic from the presentation",
+    heroVisual: "partnership",
     blocks: [
       {
         type: "cards",
@@ -456,8 +469,7 @@ export const proposalPages: ProposalPage[] = [
           "Expanded support across additional cohorts and family contexts",
           "Live dashboards, longitudinal outcomes modeling, and richer integrations"
         ],
-        image: "/presentation-assets/resource-protocols.jpg",
-        imageAlt: "Resource recommendation concept graphic",
+        visual: "growth-path",
         imagePosition: "left"
       }
     ]
@@ -471,8 +483,7 @@ export const proposalPages: ProposalPage[] = [
       "The attached presentation gives the LMS its own page and calls out the video directly. This chapter does the same and embeds the demonstration into the site.",
     heroNote:
       "The LMS chapter now works like a true destination page with an embedded demo, platform imagery, and the operational reasons the training layer matters.",
-    heroImage: "/presentation-assets/copilot-home.jpg",
-    heroImageAlt: "Training and copilot interface from the attached presentation",
+    heroVisual: "academy",
     blocks: [
       {
         type: "spotlight",
@@ -534,8 +545,7 @@ export const proposalPages: ProposalPage[] = [
       "The final chapter follows the presentation's Phase Two pages and shows how the platform expands into integrations, analytics, resource routing, and a more mature operating system.",
     heroNote:
       "This closing page is meant to feel like the long-term horizon: not just software add-ons, but a deeper integration of care operations, data, and staff capability.",
-    heroImage: "/presentation-assets/resource-protocols.jpg",
-    heroImageAlt: "Client profile to resource protocol graphic from the presentation",
+    heroVisual: "expansion-network",
     blocks: [
       {
         type: "cards",
@@ -573,8 +583,7 @@ export const proposalPages: ProposalPage[] = [
           "Peer connection recommendations",
           "A stronger foundation for conversational assessments"
         ],
-        image: "/presentation-assets/resource-protocols.jpg",
-        imageAlt: "Resource protocol routing concept image"
+        visual: "expansion-network"
       },
       {
         type: "comparison",

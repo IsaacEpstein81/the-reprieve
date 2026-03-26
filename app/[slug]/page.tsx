@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BrandMark } from "@/components/brand-mark";
 import { SurfaceCard } from "@/components/surface-card";
+import { VisualSurface } from "@/components/visual-surface";
 import {
   getProposalPage,
   proposalPages,
@@ -50,13 +52,8 @@ function PageNav({ currentSlug }: { currentSlug: ProposalPage["slug"] }) {
           href="/overview"
           className="hidden items-center gap-3 rounded-full border border-forest-100 bg-white/78 px-4 py-2 text-sm font-semibold text-ink/72 shadow-panel sm:flex"
         >
-          <span className="relative h-7 w-7 overflow-hidden rounded-full">
-            <Image
-              src="/presentation-assets/logo-mark.jpg"
-              alt="OpenRecovery mark"
-              fill
-              className="object-cover"
-            />
+          <span className="h-7 w-7">
+            <BrandMark />
           </span>
           The Reprieve x OpenRecovery
         </Link>
@@ -79,6 +76,22 @@ function PageNav({ currentSlug }: { currentSlug: ProposalPage["slug"] }) {
 }
 
 function Hero({ page }: { page: ProposalPage }) {
+  const heroMedia = page.heroVisual ? (
+    <VisualSurface variant={page.heroVisual} />
+  ) : page.heroImage ? (
+    <SurfaceCard className="overflow-hidden border-forest-100 bg-white/88 p-0">
+      <div className="relative aspect-[16/9] w-full">
+        <Image
+          src={page.heroImage}
+          alt={page.heroImageAlt ?? page.title}
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+    </SurfaceCard>
+  ) : null;
+
   return (
     <section className="relative overflow-hidden px-6 pb-16 pt-8 sm:px-10 lg:px-16">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(76,169,135,0.18),transparent_32%),radial-gradient(circle_at_top_right,rgba(18,69,56,0.08),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0))]" />
@@ -98,17 +111,7 @@ function Hero({ page }: { page: ProposalPage }) {
               </p>
               <p className="mt-8 max-w-2xl text-base leading-7 text-ink/68">{page.heroNote}</p>
             </div>
-            <SurfaceCard className="overflow-hidden border-forest-100 bg-white/88 p-0">
-              <div className="relative aspect-[16/9] w-full">
-                <Image
-                  src={page.heroImage}
-                  alt={page.heroImageAlt}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </SurfaceCard>
+            {heroMedia}
           </div>
         </div>
       </div>
@@ -204,7 +207,7 @@ function renderComparisonBlock(block: ComparisonBlock) {
 
 function renderSpotlightBlock(block: SpotlightBlock) {
   const media = block.embedUrl ? (
-    <div className="overflow-hidden rounded-[1.75rem] border border-forest-100 bg-white shadow-panel">
+    <div className="self-start overflow-hidden rounded-[1.75rem] border border-forest-100 bg-white shadow-panel">
       <div className="aspect-video w-full">
         <iframe
           src={block.embedUrl}
@@ -215,8 +218,12 @@ function renderSpotlightBlock(block: SpotlightBlock) {
         />
       </div>
     </div>
+  ) : block.visual ? (
+    <div className="self-start">
+      <VisualSurface variant={block.visual} />
+    </div>
   ) : block.image ? (
-    <div className="overflow-hidden rounded-[1.75rem] border border-forest-100 bg-white shadow-panel">
+    <div className="self-start overflow-hidden rounded-[1.75rem] border border-forest-100 bg-white shadow-panel">
       <div className="relative aspect-[16/10] w-full">
         <Image src={block.image} alt={block.imageAlt ?? block.title} fill className="object-cover" />
       </div>
@@ -227,7 +234,7 @@ function renderSpotlightBlock(block: SpotlightBlock) {
     <section key={block.title} className="px-6 py-10 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-7xl">
         <div
-          className={`grid gap-6 lg:grid-cols-2 ${
+          className={`grid gap-6 lg:grid-cols-2 lg:items-start ${
             block.imagePosition === "left" ? "lg:[&>*:first-child]:order-2" : ""
           }`}
         >
