@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f6f2ea;
+  --foreground: #12211d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(124, 193, 168, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(18, 69, 56, 0.06), transparent 24%),
+    linear-gradient(180deg, #fbf9f4 0%, #f6f2ea 100%);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+.animate-rise {
+  animation: rise 0.8s ease-out both;
+}
+
+.animate-rise-delayed {
+  animation: rise 1s ease-out both;
+  animation-delay: 0.12s;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(45, 143, 109, 0.18);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-rise,
+  .animate-rise-delayed {
+    animation: none;
+  }
+}
