@@ -22,7 +22,11 @@ body {
     radial-gradient(circle at top right, rgba(18, 69, 56, 0.06), transparent 24%),
     linear-gradient(180deg, #fbf9f4 0%, #f6f2ea 100%);
   color: var(--foreground);
-  font-family: var(--font-body), sans-serif;
+  font-family:
+    "Avenir Next",
+    "Segoe UI",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 a {
@@ -31,7 +35,12 @@ a {
 }
 
 .font-display {
-  font-family: var(--font-display), serif;
+  font-family:
+    "Iowan Old Style",
+    "Palatino Linotype",
+    "Book Antiqua",
+    Georgia,
+    serif;
 }
 
 .animate-rise {
